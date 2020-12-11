@@ -1,0 +1,80 @@
+<?php
+include('parciales/funciones.php');
+include('idiomas/' . $idioma . '/presupuestos.php');
+foreach($_GET as $k => $v) {$$k = limpiar_cadena($v);}
+
+if (!isset($_SESSION['usuario'])) {
+	redirigir('usuarios.php');
+}
+
+//$prov_id = limpiarNumero($prov_id);
+
+$error = 'no';
+
+/*  ----------------  obtener nombres de proveedores   ------------------- */
+
+		$consulta = "SELECT prov_id, prov_nic FROM " . $dbpfx . "proveedores";
+		$arreglo = mysql_query($consulta) or die("ERROR: Falló selección de proveedores!" . $consulta);
+		$num_provs = mysql_num_rows($arreglo);
+//		$aseg = array();
+		$provs[0] = 'Sin Proveedor';
+		while ($ase = mysql_fetch_array($arreglo)) {
+			$aseg[$ase['prov_id']] = $ase['prov_nic'];
+		}
+//		$aseg[0] = 'Particular';
+		$tcomp = ['1' => 'Aseguradora', '2' => 'Credito', '3' => 'Contado'];
+//		print_r($provs);
+
+$preg = "SELECT pedido_id, orden_id, fecha_creado, prov_id FROM " . $dbpfx . "pedidos WHERE pedido_estatus != 90 ";
+//$preg = "SELECT orden_id FROM " . $dbpfx . "ordenes WHERE (orden_estatus < '90' OR orden_estatus = '99') AND orden_fecha_recepcion >= '" . $feini . "' AND orden_fecha_recepcion <= '" . $fefin . "'";
+
+// AND orden_id >= '" . $orden . "'";
+
+/*
+if(($prov_id) || ($feini) || ($fefin) || ($pedido)) {
+	if($pedido != '')  { $preg .= " AND pedido_id >= '$pedido'"; }
+	if($prov_id != '')  { $preg .= " AND prov_id = '$prov_id'"; }
+	if($feini != '') { $preg .= " AND fecha_creado >= '" . date('Y-m-d 00:00:00', strtotime($feini)) . "'"; }
+	if($fefin != '') { $preg .= " AND fecha_creado <= '" . date('Y-m-d 23:59:59', strtotime($fefin)) . "'"; }
+} else {
+	$error = 'si';
+}
+*/
+
+//$preg .= " LIMIT 500";
+
+echo $preg;
+
+if($error == 'no') {
+	$matr = mysql_query($preg) or die("ERROR: Fallo seleccion inicial! " . $preg);
+	echo '<table cellpadding = "2" border="1">';
+//	echo '	<tr class="cabeza"><td colspan="7">Refacciones pedidas al Proveedor ' . $prov['prov_razon_social'] . ' (' . $prov['prov_nic'] . ')</td></tr>'."\n";
+	echo '	<tr><td>OT</td><td>Vehículo</td><td>Reporte</td><td>Parte</td><td>Costo</td><td>Precio</td><td>% Utilidad</td></tr>'."\n";
+	while ($ord = mysql_fetch_array($matr)) {
+		$veh = datosVehiculo($ord['orden_id'], $dbpfx);
+		$preg1 = "SELECT sub_orden_id, sub_aseguradora, sub_reporte FROM " . $dbpfx . "subordenes WHERE sub_estatus < '130' AND orden_id = '" . $ord['orden_id'] . "'";
+		$matr1 = mysql_query($preg1) or die("ERROR: Fallo selección de tareas! " . $preg1);
+		while($sub = mysql_fetch_array($matr1)) {
+			$preg2 = "SELECT op_id, op_nombre, op_cantidad, op_costo, op_precio, op_autosurtido, op_pedido FROM " . $dbpfx . "orden_productos WHERE sub_orden_id = '" . $sub['sub_orden_id'] . "' AND op_pedido > '0' AND op_tangible = '0'";
+//		echo $preg2;
+			$matr2 = mysql_query($preg2) or die("ERROR: Fallo selección de productos!");
+			$fila2 = mysql_num_rows($matr2);
+			if($fila2 > 0) {
+				while($prod = mysql_fetch_array($matr2)) {
+					$costo = round(($prod['op_cantidad'] * $prod['op_costo']), 2);
+					$precio = round(($prod['op_cantidad'] * $prod['op_precio']), 2);
+					$utilidad = round((($precio - $costo) / $precio),2);
+					if($sub['sub_reporte'] == '' || $sub['sub_reporte'] == '0') {
+						$sub['sub_reporte'] = 'Particular';
+					}
+					echo '	<tr><td>' . $ord['orden_id'] . '</td><td>' . $veh['completo'] . '</td><td>' . $sub['sub_reporte'] . '</td><td>' . $prod['op_nombre'] . '</td><td>' . $costo . '</td><td>' . $precio . '</td><td>' . $utilidad * 100 . '</td><tr>'."\n";
+				}
+			}
+		}
+	}
+	echo '</table>'."\n";
+} else {
+	echo 'faltaron datos de ingreso.';
+}
+
+?>

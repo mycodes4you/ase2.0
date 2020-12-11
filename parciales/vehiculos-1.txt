@@ -1,0 +1,6 @@
+	$placas= strtoupper(limpiarString($placas)); $_SESSION['vehiculo']['placas'] = $placas;
+	$marca=strtoupper(limpiarString($marca)); $_SESSION['vehiculo']['marca'] = $marca;
+	$tipo=strtoupper(limpiarString($tipo)); $_SESSION['vehiculo']['tipo'] = $tipo;
+	$subtipo=strtoupper(limpiarString($subtipo)); $_SESSION['vehiculo']['subtipo'] = $subtipo;
+	$modelo=strtoupper(limpiarString($modelo)); $_SESSION['vehiculo']['modelo'] = $modelo;
+	$color=strtoupper(limpiarString($color)); $_SESSION['vehiculo']['color'] = $color;

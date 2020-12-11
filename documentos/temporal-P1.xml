@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante xmlns:cfdi="http://www.sat.gob.mx/cfd/3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd" Version="3.3" Sello="" NoCertificado="" Certificado="" LugarExpedicion="03100" Fecha="2020-12-03T16:28:16" Serie="DF" Folio="7335" TipoDeComprobante="I" FormaPago="03" MetodoPago="PUE" Moneda="MXN" TipoCambio="1" SubTotal="8179.82" Total="9488.59" CondicionesDePago="OT 15420">
+	<cfdi:Emisor Rfc="CACX7605101P8" Nombre="CINDEMEX SA DE CV" RegimenFiscal="601"/>
+	<cfdi:Receptor Rfc="ASE931116231" Nombre="AXA SEGUROS, S.A DE CV" UsoCFDI="P01"/>
+	<cfdi:Conceptos>
+	<cfdi:Concepto Cantidad="1" ClaveProdServ="78181501" Descripcion="Mano de Obra de Hojalatería" ClaveUnidad="E48" Unidad="Servicio" ValorUnitario="1430" Importe="1430.000000"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="1430" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="228.8"/></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto><cfdi:Concepto Cantidad="1" ClaveProdServ="78181501" Descripcion="Mano de Obra de Pintura" ClaveUnidad="E48" Unidad="Servicio" ValorUnitario="820.95" Importe="820.950000"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="820.95" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="131.352"/></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto><cfdi:Concepto Cantidad="1" ClaveProdServ="25191700" Descripcion="Lote de Refacciones" ClaveUnidad="EA" Unidad="Pieza" ValorUnitario="4566.28" Importe="4566.280000"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="4566.28" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="730.6048"/></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto><cfdi:Concepto Cantidad="1" ClaveProdServ="73181104" Descripcion="Lote de Materiales" ClaveUnidad="ZZ" Unidad="N/A" ValorUnitario="1362.59" Importe="1362.590000"><cfdi:Impuestos><cfdi:Traslados><cfdi:Traslado Base="1362.59" Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="218.0144"/></cfdi:Traslados></cfdi:Impuestos></cfdi:Concepto></cfdi:Conceptos>
+	<cfdi:Impuestos TotalImpuestosTrasladados="1308.77">
+		<cfdi:Traslados>
+			<cfdi:Traslado Impuesto="002" TipoFactor="Tasa" TasaOCuota="0.160000" Importe="1308.77"/>
+		</cfdi:Traslados>
+	</cfdi:Impuestos>
+	<cfdi:Complemento>
+	</cfdi:Complemento>
+</cfdi:Comprobante>

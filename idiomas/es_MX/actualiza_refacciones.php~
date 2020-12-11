@@ -1,0 +1,21 @@
+<?php
+/*  
+
+Ajusta los textos de acuerdo a tu idioma
+
+
+*/
+$titulo="Notifica | AutoShop Easy";
+$keywords="administración de taller, control de taller";
+$pag_desc="AutoShop Easy: Aplicación para administración de todas las etapas del proceso de un Taller Mecánico Clase Mundial.";
+$pagina_actual="Recordatorio a Proveedor de Partes Pendientes";
+
+define('EMAIL_PARTES_ASUNTO', 'Recordatorio de Partes Pendientes.');
+define('EMAIL_PARTES_SALUDO', 'Estimad@ ');
+define('EMAIL_PARTES_CONT1', 'Por la presente le informamos que a la fecha no nos han sido entregadas las partes, refacciones o productos que se detallan a continuación.  De antemano le agradecemos su amable atención para que nos envíen los siguientes productos pendientes: ');
+define("EMAIL_PARTES_CONT2", "Quedamos pendientes y a la orden para cualquier aclaración o comentario.<br><br>");
+define("EMAIL_PARTES_CONT3", "Atentamente.<br>Agustín Díaz.<br>AutoShop Easy<br><br>");
+// define('', '');
+
+
+/* Página de idiomas para vehiculos */ 

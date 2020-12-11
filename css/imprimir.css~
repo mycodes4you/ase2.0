@@ -1,0 +1,142 @@
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+    margin: 15mm 15mm 15mm 15mm;  
+} 
+
+	body {
+		background-color: #fff;
+		margin: 0mm; 
+		padding: 0in;
+		font: 13px/20px normal Helvetica, Arial, sans-serif;
+/*		color: #4F5155; */
+		color: #000000;
+/*		width: 320px;  */
+	}
+
+	a {
+		color: #003399;
+		background-color: transparent;
+		font-weight: normal;
+	}
+
+	h1 {
+		color: #444;
+		background-color: transparent;
+		border-bottom: 1px solid #D0D0D0;
+		font-size: 19px;
+		font-weight: normal;
+		margin: 0 0 10px 0;
+		padding: 14px 15px 10px 15px;
+	}
+
+	#body{
+		margin: 0 15px 0 15px;
+	}
+	
+	#menu{
+		display: none;
+	}
+	
+	#menu ul{
+		padding:3px 0px 0px 0px;
+		margin:0px -5px 0px 0px; 
+		list-style:none; 
+		float:left;
+	}
+	
+	#menu ul li{
+		float:left; 
+		display:inline-block;
+		position: relative;
+		cursor:pointer; 
+		white-space:nowrap;
+		padding-left: 5px;
+		background:transparent;
+	}
+	
+	#encabezado {
+		background-color: #fff;
+		display: block;
+	}
+	
+	.autoriza {
+		background-color: #fff;
+		color: #000;
+	}
+		
+	#principal{
+		background-color: #fff;
+	}	
+	
+	.control, p.footer, iframe {
+		display: none;
+	}
+	
+TD.control {
+	width: 0px;
+}	
+	
+	#container{
+		margin: 10px;
+		border: 0px;
+	}
+
+	#container h1{
+		display: none;
+	}
+	
+table.agrega td {
+	text-align: right;
+	padding-right: 3px;
+	}
+
+table.izquierda td {
+	text-align: left;
+	padding-left: 3px;
+	vertical-align: top;
+	}
+
+tr.cabeza_tabla{
+	background-color: #ccc;
+	font-weight: bold;
+}
+
+table.pedidos td {
+	text-align: left;
+	padding-left: 3px;
+	vertical-align: top;
+	}
+
+table.pedidos tr {
+	line-height: 12px;
+	}
+
+.mediana {
+	font-size: 1.3em;
+	}
+
+.peque {
+	font-size: smaller;
+	}
+	
+.chica {
+	font-size: 10px;
+	}
+
+.claro {
+	background-color: #f6f6f6;
+	color: #303030;
+}
+
+.obscuro {
+	background-color: #ebebeb;
+	color: #303030;
+}
+
+div.saltopagina {
+	display:block;
+	page-break-before:always;
+}
